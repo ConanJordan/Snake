@@ -73,6 +73,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Block.vb" />
     <Compile Include="GameForm.vb">
       <SubType>Form</SubType>
     </Compile>
