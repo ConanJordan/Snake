@@ -22,117 +22,117 @@ Partial Class GameForm
     'コード エディターを使って変更しないでください。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.Button7 = New System.Windows.Forms.Button()
-        Me.GroupBox1.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
+        Me.PN_GamePad = New System.Windows.Forms.Panel()
+        Me.GB_Items = New System.Windows.Forms.GroupBox()
+        Me.BTN_Stop = New System.Windows.Forms.Button()
+        Me.BTN_Pause = New System.Windows.Forms.Button()
+        Me.BTN_Start = New System.Windows.Forms.Button()
+        Me.GB_Operate = New System.Windows.Forms.GroupBox()
+        Me.BTN_Right = New System.Windows.Forms.Button()
+        Me.BTN_Left = New System.Windows.Forms.Button()
+        Me.BTN_Down = New System.Windows.Forms.Button()
+        Me.BTN_Up = New System.Windows.Forms.Button()
+        Me.GB_Items.SuspendLayout()
+        Me.GB_Operate.SuspendLayout()
         Me.SuspendLayout()
         '
-        'Panel1
+        'PN_GamePad
         '
-        Me.Panel1.BackColor = System.Drawing.Color.LightGray
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(361, 361)
-        Me.Panel1.TabIndex = 0
+        Me.PN_GamePad.BackColor = System.Drawing.Color.LightGray
+        Me.PN_GamePad.Location = New System.Drawing.Point(0, 0)
+        Me.PN_GamePad.Name = "PN_GamePad"
+        Me.PN_GamePad.Size = New System.Drawing.Size(361, 361)
+        Me.PN_GamePad.TabIndex = 0
         '
-        'GroupBox1
+        'GB_Items
         '
-        Me.GroupBox1.Controls.Add(Me.Button3)
-        Me.GroupBox1.Controls.Add(Me.Button2)
-        Me.GroupBox1.Controls.Add(Me.Button1)
-        Me.GroupBox1.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(372, 12)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(200, 150)
-        Me.GroupBox1.TabIndex = 1
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "选项"
+        Me.GB_Items.Controls.Add(Me.BTN_Stop)
+        Me.GB_Items.Controls.Add(Me.BTN_Pause)
+        Me.GB_Items.Controls.Add(Me.BTN_Start)
+        Me.GB_Items.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.GB_Items.Location = New System.Drawing.Point(372, 12)
+        Me.GB_Items.Name = "GB_Items"
+        Me.GB_Items.Size = New System.Drawing.Size(200, 150)
+        Me.GB_Items.TabIndex = 1
+        Me.GB_Items.TabStop = False
+        Me.GB_Items.Text = "选项"
         '
-        'GroupBox2
+        'BTN_Stop
         '
-        Me.GroupBox2.Controls.Add(Me.Button7)
-        Me.GroupBox2.Controls.Add(Me.Button6)
-        Me.GroupBox2.Controls.Add(Me.Button5)
-        Me.GroupBox2.Controls.Add(Me.Button4)
-        Me.GroupBox2.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(372, 199)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(200, 150)
-        Me.GroupBox2.TabIndex = 2
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "操作"
+        Me.BTN_Stop.Location = New System.Drawing.Point(64, 107)
+        Me.BTN_Stop.Name = "BTN_Stop"
+        Me.BTN_Stop.Size = New System.Drawing.Size(75, 23)
+        Me.BTN_Stop.TabIndex = 2
+        Me.BTN_Stop.Text = "结束"
+        Me.BTN_Stop.UseVisualStyleBackColor = True
         '
-        'Button1
+        'BTN_Pause
         '
-        Me.Button1.Location = New System.Drawing.Point(64, 21)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "开始"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.BTN_Pause.Location = New System.Drawing.Point(63, 64)
+        Me.BTN_Pause.Name = "BTN_Pause"
+        Me.BTN_Pause.Size = New System.Drawing.Size(75, 23)
+        Me.BTN_Pause.TabIndex = 1
+        Me.BTN_Pause.Text = "暂停"
+        Me.BTN_Pause.UseVisualStyleBackColor = True
         '
-        'Button2
+        'BTN_Start
         '
-        Me.Button2.Location = New System.Drawing.Point(63, 64)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 1
-        Me.Button2.Text = "暂停"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.BTN_Start.Location = New System.Drawing.Point(64, 21)
+        Me.BTN_Start.Name = "BTN_Start"
+        Me.BTN_Start.Size = New System.Drawing.Size(75, 23)
+        Me.BTN_Start.TabIndex = 0
+        Me.BTN_Start.Text = "开始"
+        Me.BTN_Start.UseVisualStyleBackColor = True
         '
-        'Button3
+        'GB_Operate
         '
-        Me.Button3.Location = New System.Drawing.Point(64, 107)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 23)
-        Me.Button3.TabIndex = 2
-        Me.Button3.Text = "结束"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.GB_Operate.Controls.Add(Me.BTN_Right)
+        Me.GB_Operate.Controls.Add(Me.BTN_Left)
+        Me.GB_Operate.Controls.Add(Me.BTN_Down)
+        Me.GB_Operate.Controls.Add(Me.BTN_Up)
+        Me.GB_Operate.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.GB_Operate.Location = New System.Drawing.Point(372, 199)
+        Me.GB_Operate.Name = "GB_Operate"
+        Me.GB_Operate.Size = New System.Drawing.Size(200, 150)
+        Me.GB_Operate.TabIndex = 2
+        Me.GB_Operate.TabStop = False
+        Me.GB_Operate.Text = "操作"
         '
-        'Button4
+        'BTN_Right
         '
-        Me.Button4.Location = New System.Drawing.Point(64, 36)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 23)
-        Me.Button4.TabIndex = 0
-        Me.Button4.Text = "Up"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.BTN_Right.Location = New System.Drawing.Point(119, 65)
+        Me.BTN_Right.Name = "BTN_Right"
+        Me.BTN_Right.Size = New System.Drawing.Size(75, 23)
+        Me.BTN_Right.TabIndex = 3
+        Me.BTN_Right.Text = "Right"
+        Me.BTN_Right.UseVisualStyleBackColor = True
         '
-        'Button5
+        'BTN_Left
         '
-        Me.Button5.Location = New System.Drawing.Point(64, 94)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(75, 23)
-        Me.Button5.TabIndex = 1
-        Me.Button5.Text = "Down"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.BTN_Left.Location = New System.Drawing.Point(6, 65)
+        Me.BTN_Left.Name = "BTN_Left"
+        Me.BTN_Left.Size = New System.Drawing.Size(75, 23)
+        Me.BTN_Left.TabIndex = 2
+        Me.BTN_Left.Text = "Left"
+        Me.BTN_Left.UseVisualStyleBackColor = True
         '
-        'Button6
+        'BTN_Down
         '
-        Me.Button6.Location = New System.Drawing.Point(6, 65)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(75, 23)
-        Me.Button6.TabIndex = 2
-        Me.Button6.Text = "Left"
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.BTN_Down.Location = New System.Drawing.Point(64, 94)
+        Me.BTN_Down.Name = "BTN_Down"
+        Me.BTN_Down.Size = New System.Drawing.Size(75, 23)
+        Me.BTN_Down.TabIndex = 1
+        Me.BTN_Down.Text = "Down"
+        Me.BTN_Down.UseVisualStyleBackColor = True
         '
-        'Button7
+        'BTN_Up
         '
-        Me.Button7.Location = New System.Drawing.Point(119, 65)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(75, 23)
-        Me.Button7.TabIndex = 3
-        Me.Button7.Text = "Right"
-        Me.Button7.UseVisualStyleBackColor = True
+        Me.BTN_Up.Location = New System.Drawing.Point(64, 36)
+        Me.BTN_Up.Name = "BTN_Up"
+        Me.BTN_Up.Size = New System.Drawing.Size(75, 23)
+        Me.BTN_Up.TabIndex = 0
+        Me.BTN_Up.Text = "Up"
+        Me.BTN_Up.UseVisualStyleBackColor = True
         '
         'GameForm
         '
@@ -140,28 +140,28 @@ Partial Class GameForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(584, 361)
-        Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.GB_Operate)
+        Me.Controls.Add(Me.GB_Items)
+        Me.Controls.Add(Me.PN_GamePad)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.Name = "GameForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "贪吃蛇"
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox2.ResumeLayout(False)
+        Me.GB_Items.ResumeLayout(False)
+        Me.GB_Operate.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents GroupBox2 As GroupBox
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button4 As Button
-    Friend WithEvents Button5 As Button
-    Friend WithEvents Button7 As Button
-    Friend WithEvents Button6 As Button
+    Friend WithEvents PN_GamePad As Panel
+    Friend WithEvents GB_Items As GroupBox
+    Friend WithEvents GB_Operate As GroupBox
+    Friend WithEvents BTN_Start As Button
+    Friend WithEvents BTN_Stop As Button
+    Friend WithEvents BTN_Pause As Button
+    Friend WithEvents BTN_Up As Button
+    Friend WithEvents BTN_Down As Button
+    Friend WithEvents BTN_Right As Button
+    Friend WithEvents BTN_Left As Button
 End Class
