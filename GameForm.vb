@@ -27,6 +27,7 @@
     ' 开始
     Private Sub BTN_Start_Click(sender As Object, e As EventArgs) Handles BTN_Start.Click
         Block.InitGraphics(PN_GamePad.CreateGraphics)
+        console.Score = 0  ' 得分清零
         console.CreateSnake()
         console.CreateApple()
         console.Direction = GameConsole.Direction_Right  ' 初始方向朝右

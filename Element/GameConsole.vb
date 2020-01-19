@@ -56,7 +56,7 @@ Public Class GameConsole
     Public Sub CreateSnake()
         Dim head As Point = New Point(10 + Delta * InitBodyCount, 10)
         Dim body As ArrayList = New ArrayList()
-        For count As Integer = 1 To InitBodyCount
+        For count As Integer = InitBodyCount To 1 Step -1
             body.Add(New Point(10 + (count - 1) * Delta, 10))
         Next
         Snake = New Snake(head, body)
@@ -76,30 +76,46 @@ Public Class GameConsole
             Exit Sub  ' 结束本方法
         End If
 
-        ' 擦除原来的贪吃蛇
-        DoErase(Snake.Head.LocatingPoint)
-        For Each block In Snake.Body
-            DoErase(block.LocatingPoint)
-        Next
+        Dim tailBlock As Block = New Block(Block.Color_GamePad)  ' 蛇尾的方块
 
-        ' 蛇身的每个方块向前一个方块移动一个方块的距离
+        ' 蛇身的每个方块向前一个方块的方向移动一个方块的距离
         For index As Integer = Snake.Body.Count - 1 To 0 Step -1
             If index = 0 Then
                 Snake.Body(index).LocatingPoint = Snake.Head.LocatingPoint
                 Continue For
             End If
+            If index = Snake.Body.Count - 1 Then  ' 蛇尾
+                tailBlock.LocatingPoint = Snake.Body(index).LocatingPoint
+            End If
             Snake.Body(index).LocatingPoint = Snake.Body(index - 1).LocatingPoint
         Next
+
         ' 蛇头移动一个方块的距离
         Snake.Head.LocatingPoint = New Point(Snake.Head.LocatingPoint.X + vectorX, Snake.Head.LocatingPoint.Y + vectorY)
 
         ' 绘制新的贪吃蛇
+        Move(tailBlock)
+
+    End Sub
+
+    ' 贪吃蛇前行（绘图部分）
+    Private Sub Move(tailBlock As Block)
+        ' 只需绘制以下三个部分
+        ' ①蛇头
+        ' ②蛇身的第一个方块
+        ' ③原来的蛇身的最后一个方块(游戏背景板颜色)
+
+        ' ①蛇头
         Snake.Head.CreateBody()
         Snake.Head.DrawSelf()
-        For index As Integer = 0 To Snake.Body.Count - 1
-            Snake.Body(index).CreateBody()
-            Snake.Body(index).DrawSelf()
-        Next
+
+        ' ②蛇身的第一个方块
+        Snake.Body(0).CreateBody()
+        Snake.Body(0).DrawSelf()
+
+        ' ③原来的蛇身的最后一个方块(游戏背景板颜色)
+        tailBlock.CreateBody()
+        tailBlock.DrawSelf()
     End Sub
 
     ' 贪吃蛇吃苹果
