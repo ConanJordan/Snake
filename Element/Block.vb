@@ -9,12 +9,12 @@ Public Class Block
     Private _brush As SolidBrush  ' 画刷
     Private _rec As Rectangle  ' 用于绘制的矩形(一个点)
 
-    ' 蛇头：红色
-    Public Shared ReadOnly Color_SnakeHead As Color = Color.Red
+    ' 蛇头：橘红
+    Public Shared ReadOnly Color_SnakeHead As Color = Color.OrangeRed
     ' 蛇身：天空蓝
     Public Shared ReadOnly Color_SnakeBody As Color = Color.SkyBlue
     ' 苹果：绿色
-    Public Shared ReadOnly Color_Apple As Color = Color.LightGreen
+    Public Shared ReadOnly Color_Apple As Color = Color.LawnGreen
     ' 游戏背景板：浅灰
     Public Shared ReadOnly Color_GamePad As Color = Color.LightGray
 

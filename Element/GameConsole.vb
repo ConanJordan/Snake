@@ -5,7 +5,12 @@ Public Class GameConsole
 
     ' 生成一条贪吃蛇
     Public Sub CreateSnake()
+        Dim head As Point = New Point(10 + 19 * 2, 10)
+        Dim body As ArrayList = New ArrayList()
+        body.Add(New Point(10 + 19, 10))
+        body.Add(New Point(10, 10))
 
+        Dim snake As Snake = New Snake(head, body)
     End Sub
 
     ' 生成苹果
