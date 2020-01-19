@@ -5,6 +5,8 @@ Public Class Block
     Private _locatingPoint As Point  ' 定位点(在方块的中心)
     Private _bodyPoints As New ArrayList()  ' 方块体的点集合
     Private _color As Color  ' 方块颜色
+    Public Shared graphics As Graphics  ' 图形
+    Private _pen As Pen  ' 画笔
 
     ' 蛇头：红色
     Public Shared ReadOnly Color_SnakeHead As Color = Color.Red
@@ -16,8 +18,19 @@ Public Class Block
     ' 构造函数
     Public Sub New(locatingPoint As Point, color As Color)
         _locatingPoint = locatingPoint
-        _color = color
-        CreateBody()
+        Me.Color = color
+        CreateBody()  ' 生成方块体
+        DrawSelf()  ' 绘制本方块
+    End Sub
+
+    ' 绘制本方块
+    Public Sub DrawSelf()
+        Pen = New Pen(Color, 1)  ' 画笔上色
+        graphics.DrawLine(Pen, LocatingPoint.X, LocatingPoint.Y, LocatingPoint.X, LocatingPoint.Y)  ' 绘制定位像素
+        ' 绘制方块体
+        For Each point In BodyPoints
+            graphics.DrawLine(Pen, point.X, point.Y, point.X, point.Y)
+        Next
     End Sub
 
     ' 生成方块体
@@ -41,6 +54,11 @@ Public Class Block
         Next
     End Sub
 
+    ' 初始化用于绘制的对象
+    Public Shared Sub InitGraphics(_graphics As Graphics)
+        graphics = _graphics
+    End Sub
+
     Public Property LocatingPoint As Point
         Get
             Return _locatingPoint
@@ -56,6 +74,15 @@ Public Class Block
         End Get
         Set(value As ArrayList)
             _bodyPoints = value
+        End Set
+    End Property
+
+    Public Property Pen As Pen
+        Get
+            Return _pen
+        End Get
+        Set(value As Pen)
+            _pen = value
         End Set
     End Property
 
