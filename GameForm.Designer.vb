@@ -33,7 +33,7 @@ Partial Class GameForm
         Me.BTN_Down = New System.Windows.Forms.Button()
         Me.BTN_Up = New System.Windows.Forms.Button()
         Me.GB_Score = New System.Windows.Forms.GroupBox()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.LB_Score = New System.Windows.Forms.Label()
         Me.GB_Items.SuspendLayout()
         Me.GB_Operate.SuspendLayout()
         Me.GB_Score.SuspendLayout()
@@ -66,6 +66,7 @@ Partial Class GameForm
         Me.BTN_Stop.Name = "BTN_Stop"
         Me.BTN_Stop.Size = New System.Drawing.Size(75, 23)
         Me.BTN_Stop.TabIndex = 2
+        Me.BTN_Stop.TabStop = False
         Me.BTN_Stop.Text = "结束"
         Me.BTN_Stop.UseVisualStyleBackColor = True
         '
@@ -75,6 +76,7 @@ Partial Class GameForm
         Me.BTN_Pause.Name = "BTN_Pause"
         Me.BTN_Pause.Size = New System.Drawing.Size(75, 23)
         Me.BTN_Pause.TabIndex = 1
+        Me.BTN_Pause.TabStop = False
         Me.BTN_Pause.Text = "暂停"
         Me.BTN_Pause.UseVisualStyleBackColor = True
         '
@@ -84,6 +86,7 @@ Partial Class GameForm
         Me.BTN_Start.Name = "BTN_Start"
         Me.BTN_Start.Size = New System.Drawing.Size(75, 23)
         Me.BTN_Start.TabIndex = 0
+        Me.BTN_Start.TabStop = False
         Me.BTN_Start.Text = "开始"
         Me.BTN_Start.UseVisualStyleBackColor = True
         '
@@ -107,6 +110,7 @@ Partial Class GameForm
         Me.BTN_Right.Name = "BTN_Right"
         Me.BTN_Right.Size = New System.Drawing.Size(75, 23)
         Me.BTN_Right.TabIndex = 3
+        Me.BTN_Right.TabStop = False
         Me.BTN_Right.Text = "Right"
         Me.BTN_Right.UseVisualStyleBackColor = True
         '
@@ -116,6 +120,7 @@ Partial Class GameForm
         Me.BTN_Left.Name = "BTN_Left"
         Me.BTN_Left.Size = New System.Drawing.Size(75, 23)
         Me.BTN_Left.TabIndex = 2
+        Me.BTN_Left.TabStop = False
         Me.BTN_Left.Text = "Left"
         Me.BTN_Left.UseVisualStyleBackColor = True
         '
@@ -125,6 +130,7 @@ Partial Class GameForm
         Me.BTN_Down.Name = "BTN_Down"
         Me.BTN_Down.Size = New System.Drawing.Size(75, 23)
         Me.BTN_Down.TabIndex = 1
+        Me.BTN_Down.TabStop = False
         Me.BTN_Down.Text = "Down"
         Me.BTN_Down.UseVisualStyleBackColor = True
         '
@@ -134,12 +140,13 @@ Partial Class GameForm
         Me.BTN_Up.Name = "BTN_Up"
         Me.BTN_Up.Size = New System.Drawing.Size(75, 23)
         Me.BTN_Up.TabIndex = 0
+        Me.BTN_Up.TabStop = False
         Me.BTN_Up.Text = "Up"
         Me.BTN_Up.UseVisualStyleBackColor = True
         '
         'GB_Score
         '
-        Me.GB_Score.Controls.Add(Me.Label1)
+        Me.GB_Score.Controls.Add(Me.LB_Score)
         Me.GB_Score.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.GB_Score.Location = New System.Drawing.Point(372, 11)
         Me.GB_Score.Name = "GB_Score"
@@ -148,16 +155,16 @@ Partial Class GameForm
         Me.GB_Score.TabStop = False
         Me.GB_Score.Text = "分数"
         '
-        'Label1
+        'LB_Score
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Consolas", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(91, 18)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(22, 24)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "0"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.LB_Score.AutoSize = True
+        Me.LB_Score.Font = New System.Drawing.Font("Consolas", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LB_Score.Location = New System.Drawing.Point(91, 18)
+        Me.LB_Score.Name = "LB_Score"
+        Me.LB_Score.Size = New System.Drawing.Size(22, 24)
+        Me.LB_Score.TabIndex = 0
+        Me.LB_Score.Text = "0"
+        Me.LB_Score.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'GameForm
         '
@@ -193,5 +200,5 @@ Partial Class GameForm
     Friend WithEvents BTN_Right As Button
     Friend WithEvents BTN_Left As Button
     Friend WithEvents GB_Score As GroupBox
-    Friend WithEvents Label1 As Label
+    Friend WithEvents LB_Score As Label
 End Class

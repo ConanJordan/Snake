@@ -5,6 +5,22 @@
 
     End Sub
 
+    ' 监听键盘的按键按下事件
+    ' 四个方向键
+    Private Sub KeyPressDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        Select Case e.KeyCode
+            Case Keys.Up  'Up
+                BTN_Up_Click(sender, e)
+            Case Keys.Down  ' Down
+                BTN_Down_Click(sender, e)
+            Case Keys.Left  ' Left
+                BTN_Left_Click(sender, e)
+            Case Keys.Right  ' Right
+                BTN_Right_Click(sender, e)
+        End Select
+    End Sub
+
+    ' 开始
     Private Sub BTN_Start_Click(sender As Object, e As EventArgs) Handles BTN_Start.Click
         Block.InitGraphics(PN_GamePad.CreateGraphics)
         console.CreateSnake()
@@ -13,7 +29,7 @@
 
     ' Right
     Private Sub BTN_Right_Click(sender As Object, e As EventArgs) Handles BTN_Right.Click
-
+        LB_Score.Text = "Right"
     End Sub
 
     ' Left
@@ -33,6 +49,6 @@
 
     ' 结束
     Private Sub BTN_Stop_Click(sender As Object, e As EventArgs) Handles BTN_Stop.Click
-        Application.Exit()
+
     End Sub
 End Class
