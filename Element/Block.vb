@@ -26,6 +26,11 @@ Public Class Block
         DrawSelf()  ' 绘制本方块
     End Sub
 
+    ' 构造函数
+    Public Sub New()
+
+    End Sub
+
     ' 绘制本方块
     Public Sub DrawSelf()
         Brush = New SolidBrush(Color)  ' 画刷上色
@@ -42,7 +47,7 @@ Public Class Block
     End Sub
 
     ' 生成方块体
-    Private Sub CreateBody()
+    Public Sub CreateBody()
         BodyPoints.Clear()  ' 清空方块体的点集合
         For locationX As Integer = LocatingPoint.X - 9 To LocatingPoint.X + 9  ' 横坐标范围
             For locationY As Integer = LocatingPoint.Y - 9 To LocatingPoint.Y + 9  ' 纵坐标范围
@@ -111,4 +116,25 @@ Public Class Block
             _rec = value
         End Set
     End Property
+
+    Public Property X As Integer
+        Get
+            Return LocatingPoint.X
+        End Get
+        Set(value As Integer)
+            Dim point = LocatingPoint
+            point.X = value
+        End Set
+    End Property
+
+    Public Property Y As Integer
+        Get
+            Return LocatingPoint.Y
+        End Get
+        Set(value As Integer)
+            Dim point = LocatingPoint
+            point.Y = value
+        End Set
+    End Property
+
 End Class

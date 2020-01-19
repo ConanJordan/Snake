@@ -11,7 +11,7 @@
         console.CreateSnake()
     End Sub
 
-    Private Sub GB_Score_Enter(sender As Object, e As EventArgs) Handles GB_Score.Enter
-
+    Private Sub BTN_Right_Click(sender As Object, e As EventArgs) Handles BTN_Right.Click
+        console.Move()
     End Sub
 End Class
