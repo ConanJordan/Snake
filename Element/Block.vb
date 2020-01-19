@@ -5,7 +5,7 @@ Public Class Block
     Private _locatingPoint As Point  ' 定位点(在方块的中心)
     Private _bodyPoints As New ArrayList()  ' 方块体的点集合
     Private _color As Color  ' 方块颜色
-    Public Shared graphics As Graphics  ' 图形
+    Public Shared graphics As Graphics  ' 画板
     Private _pen As Pen  ' 画笔
 
     ' 蛇头：红色

@@ -75,6 +75,7 @@
   <ItemGroup>
     <Compile Include="Element\Apple.vb" />
     <Compile Include="Element\Block.vb" />
+    <Compile Include="Element\GameConsole.vb" />
     <Compile Include="Element\Snake.vb" />
     <Compile Include="GameForm.vb">
       <SubType>Form</SubType>
