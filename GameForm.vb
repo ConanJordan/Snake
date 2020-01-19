@@ -98,6 +98,9 @@
 
     ' 计时器
     Private Sub TI_Game_Tick(sender As Object, e As EventArgs) Handles TI_Game.Tick
+        If console.Snake.Body.Count = GameConsole.Delta * GameConsole.Delta - 4 Then  ' 蛇身的方块数达到上限，游戏胜利。
+            MessageBox.Show("You Win!")
+        End If
         Select Case console.Direction  ' 判断贪吃蛇当前移动的方向
             Case GameConsole.Direction_Up  ' 上
                 console.Move(0, -GameConsole.Delta)

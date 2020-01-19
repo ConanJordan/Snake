@@ -120,20 +120,16 @@ Public Class GameConsole
 
     ' 贪吃蛇吃苹果
     Private Sub EatApple()
-        ' 擦除原来的贪吃蛇
-        DoErase(Snake.Head.LocatingPoint)
-        For Each block In Snake.Body
-            DoErase(block.LocatingPoint)
-        Next
 
-        ' 记录下蛇尾的位置，之后在这里新增一个方块
-        Dim tailPoint As Point = Snake.Body(Snake.Body.Count - 1).LocatingPoint
-
+        Dim tailBlock As Block = New Block(Block.Color_GamePad)  ' 蛇尾的方块
         ' 蛇身的每个方块向前一个方块移动一个方块的距离
         For index As Integer = Snake.Body.Count - 1 To 0 Step -1
             If index = 0 Then
                 Snake.Body(index).LocatingPoint = Snake.Head.LocatingPoint
                 Continue For
+            End If
+            If index = Snake.Body.Count - 1 Then  ' 蛇尾
+                tailBlock.LocatingPoint = Snake.Body(index).LocatingPoint
             End If
             Snake.Body(index).LocatingPoint = Snake.Body(index - 1).LocatingPoint
         Next
@@ -142,17 +138,10 @@ Public Class GameConsole
         Snake.Head.LocatingPoint = Apple.Location
 
         ' 在蛇尾添加一个方块
-        Dim TailBlock As Block = New Block(Block.Color_SnakeBody)
-        TailBlock.LocatingPoint = tailPoint
-        Snake.Body.Add(TailBlock)
+        Snake.Body.Add(tailBlock)
 
         ' 绘制新的贪吃蛇
-        Snake.Head.CreateBody()
-        Snake.Head.DrawSelf()
-        For index As Integer = 0 To Snake.Body.Count - 1
-            Snake.Body(index).CreateBody()
-            Snake.Body(index).DrawSelf()
-        Next
+        Move(tailBlock)
 
         Score += 1  ' 得分加1
 
