@@ -172,7 +172,7 @@ Partial Class GameForm
         '
         'TI_Game
         '
-        Me.TI_Game.Interval = 400
+        Me.TI_Game.Interval = 300
         '
         'GameForm
         '
