@@ -6,7 +6,8 @@ Public Class Block
     Private _bodyPoints As New ArrayList()  ' 方块体的点集合
     Private _color As Color  ' 方块颜色
     Public Shared graphics As Graphics  ' 画板
-    Private _pen As Pen  ' 画笔
+    Private _brush As SolidBrush  ' 画刷
+    Private _rec As Rectangle  ' 用于绘制的矩形(一个点)
 
     ' 蛇头：红色
     Public Shared ReadOnly Color_SnakeHead As Color = Color.Red
@@ -14,6 +15,8 @@ Public Class Block
     Public Shared ReadOnly Color_SnakeBody As Color = Color.SkyBlue
     ' 苹果：绿色
     Public Shared ReadOnly Color_Apple As Color = Color.LightGreen
+    ' 游戏背景板：浅灰
+    Public Shared ReadOnly Color_GamePad As Color = Color.LightGray
 
     ' 构造函数
     Public Sub New(locatingPoint As Point, color As Color)
@@ -25,12 +28,17 @@ Public Class Block
 
     ' 绘制本方块
     Public Sub DrawSelf()
-        Pen = New Pen(Color, 1)  ' 画笔上色
-        graphics.DrawLine(Pen, LocatingPoint.X, LocatingPoint.Y, LocatingPoint.X, LocatingPoint.Y)  ' 绘制定位像素
+        Brush = New SolidBrush(Color)  ' 画刷上色
+        DrawPoint(LocatingPoint)  ' 绘制定位像素
         ' 绘制方块体
         For Each point In BodyPoints
-            graphics.DrawLine(Pen, point.X, point.Y, point.X, point.Y)
+            DrawPoint(point)
         Next
+    End Sub
+
+    Public Sub DrawPoint(point As Point)
+        Rec = New Rectangle(point.X, point.Y, 1, 1)
+        graphics.FillRectangle(Brush, Rec)
     End Sub
 
     ' 生成方块体
@@ -77,21 +85,30 @@ Public Class Block
         End Set
     End Property
 
-    Public Property Pen As Pen
-        Get
-            Return _pen
-        End Get
-        Set(value As Pen)
-            _pen = value
-        End Set
-    End Property
-
     Public Property Color As Color
         Get
             Return _color
         End Get
         Set(value As Color)
             _color = value
+        End Set
+    End Property
+
+    Public Property Brush As SolidBrush
+        Get
+            Return _brush
+        End Get
+        Set(value As SolidBrush)
+            _brush = value
+        End Set
+    End Property
+
+    Public Property Rec As Rectangle
+        Get
+            Return _rec
+        End Get
+        Set(value As Rectangle)
+            _rec = value
         End Set
     End Property
 End Class
