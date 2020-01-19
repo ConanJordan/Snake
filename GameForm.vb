@@ -25,6 +25,8 @@
         Block.InitGraphics(PN_GamePad.CreateGraphics)
         console.CreateSnake()
         console.CreateApple()
+        console.Direction = GameConsole.Direction_Right  ' 初始方向朝右
+        TI_Game.Enabled = True
     End Sub
 
     ' Right
@@ -49,6 +51,11 @@
 
     ' 结束
     Private Sub BTN_Stop_Click(sender As Object, e As EventArgs) Handles BTN_Stop.Click
+        Application.Exit()
+    End Sub
+
+    ' 计时器
+    Private Sub TI_Game_Tick(sender As Object, e As EventArgs) Handles TI_Game.Tick
 
     End Sub
 End Class

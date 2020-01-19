@@ -22,6 +22,7 @@ Partial Class GameForm
     'コード エディターを使って変更しないでください。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.PN_GamePad = New System.Windows.Forms.Panel()
         Me.GB_Items = New System.Windows.Forms.GroupBox()
         Me.BTN_Stop = New System.Windows.Forms.Button()
@@ -34,6 +35,7 @@ Partial Class GameForm
         Me.BTN_Up = New System.Windows.Forms.Button()
         Me.GB_Score = New System.Windows.Forms.GroupBox()
         Me.LB_Score = New System.Windows.Forms.Label()
+        Me.TI_Game = New System.Windows.Forms.Timer(Me.components)
         Me.GB_Items.SuspendLayout()
         Me.GB_Operate.SuspendLayout()
         Me.GB_Score.SuspendLayout()
@@ -166,6 +168,10 @@ Partial Class GameForm
         Me.LB_Score.Text = "0"
         Me.LB_Score.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'TI_Game
+        '
+        Me.TI_Game.Interval = 400
+        '
         'GameForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
@@ -201,4 +207,5 @@ Partial Class GameForm
     Friend WithEvents BTN_Left As Button
     Friend WithEvents GB_Score As GroupBox
     Friend WithEvents LB_Score As Label
+    Friend WithEvents TI_Game As Timer
 End Class

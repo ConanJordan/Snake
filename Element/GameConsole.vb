@@ -50,8 +50,7 @@ Public Class GameConsole
     End Sub
 
     ' 贪吃蛇前行
-    Public Sub Move()
-        ' 向右前行
+    Public Sub Move(vectorX As Integer, vectorY As Integer)
 
         ' 擦除原来的贪吃蛇
         DoErase(Snake.Head.LocatingPoint)
@@ -67,8 +66,8 @@ Public Class GameConsole
             End If
             Snake.Body(index).LocatingPoint = Snake.Body(index - 1).LocatingPoint
         Next
-        ' 蛇头向右移动一个方块的距离
-        Snake.Head.LocatingPoint = New Point(Snake.Head.LocatingPoint.X + Delta, Snake.Head.LocatingPoint.Y)
+        ' 蛇头移动一个方块的距离
+        Snake.Head.LocatingPoint = New Point(Snake.Head.LocatingPoint.X + vectorX, Snake.Head.LocatingPoint.Y + vectorY)
 
         ' 绘制新的贪吃蛇
         Snake.Head.CreateBody()
