@@ -42,33 +42,37 @@
 
     ' Right
     Private Sub BTN_Right_Click(sender As Object, e As EventArgs) Handles BTN_Right.Click
-        If console.Direction = GameConsole.Direction_Left Then  ' 当前方向朝左时不可调整方向
+        If console.DirectionChangable = False OrElse console.Direction = GameConsole.Direction_Left Then  ' 当前方向朝左时不可调整方向
             Exit Sub
         End If
+        console.DirectionChangable = False  ' 不可调整方向
         console.Direction = GameConsole.Direction_Right  ' 调整方向
     End Sub
 
     ' Left
     Private Sub BTN_Left_Click(sender As Object, e As EventArgs) Handles BTN_Left.Click
-        If console.Direction = GameConsole.Direction_Right Then  ' 当前方向朝右时不可调整方向
+        If console.DirectionChangable = False OrElse console.Direction = GameConsole.Direction_Right Then  ' 当前方向朝右时不可调整方向
             Exit Sub
         End If
+        console.DirectionChangable = False  ' 不可调整方向
         console.Direction = GameConsole.Direction_Left  ' 调整方向
     End Sub
 
     ' Up
     Private Sub BTN_Up_Click(sender As Object, e As EventArgs) Handles BTN_Up.Click
-        If console.Direction = GameConsole.Direction_Down Then  ' 当前方向朝下时不可调整方向
+        If console.DirectionChangable = False OrElse console.Direction = GameConsole.Direction_Down Then  ' 当前方向朝下时不可调整方向
             Exit Sub
         End If
+        console.DirectionChangable = False  ' 不可调整方向
         console.Direction = GameConsole.Direction_Up  ' 调整方向
     End Sub
 
     ' Down
     Private Sub BTN_Down_Click(sender As Object, e As EventArgs) Handles BTN_Down.Click
-        If console.Direction = GameConsole.Direction_Up Then  ' 当前方向朝上时不可调整方向
+        If console.DirectionChangable = False OrElse console.Direction = GameConsole.Direction_Up Then  ' 当前方向朝上时不可调整方向
             Exit Sub
         End If
+        console.DirectionChangable = False  ' 不可调整方向
         console.Direction = GameConsole.Direction_Down  ' 调整方向
     End Sub
 
@@ -103,6 +107,7 @@
             Case GameConsole.Direction_Right  ' 右
                 console.Move(GameConsole.Delta, 0)
         End Select
+        console.DirectionChangable = True  ' 可调整方向
     End Sub
 
     ' 暂停(继续)

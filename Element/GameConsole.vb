@@ -8,6 +8,7 @@ Public Class GameConsole
     Private _direction As Integer  ' 当前移动方向
     Private _score As Integer  ' 当前得分
     Private _gameStatus As Integer = Status_OK ' 游戏状态（未开始，进行中，游戏结束）
+    Private _directionChangable As Boolean  ' 判断是否可以变换方向。防止方向键按得过快，使蛇头直接掉头向反方向走位了。
 
     ' 每次移动的偏移距离(19个像素点)
     Public Shared ReadOnly Delta As Integer = 19
@@ -199,6 +200,15 @@ Public Class GameConsole
         End Get
         Set(value As Integer)
             _gameStatus = value
+        End Set
+    End Property
+
+    Public Property DirectionChangable As Boolean
+        Get
+            Return _directionChangable
+        End Get
+        Set(value As Boolean)
+            _directionChangable = value
         End Set
     End Property
 
