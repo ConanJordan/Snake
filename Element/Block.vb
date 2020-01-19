@@ -27,6 +27,11 @@ Public Class Block
     End Sub
 
     ' 构造函数
+    Public Sub New(color As Color)
+        Me.Color = color
+    End Sub
+
+    ' 构造函数
     Public Sub New()
 
     End Sub

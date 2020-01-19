@@ -108,6 +108,7 @@
                 console.Move(GameConsole.Delta, 0)
         End Select
         console.DirectionChangable = True  ' 可调整方向
+        LB_Score.Text = console.Score  ' 显示最新得分
     End Sub
 
     ' 暂停(继续)

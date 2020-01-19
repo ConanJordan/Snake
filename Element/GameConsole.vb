@@ -38,7 +38,7 @@ Public Class GameConsole
     Public Shared ReadOnly Status_Running As Integer = 2
 
     ' 游戏状态：游戏结束
-    Public Shared ReadOnly Statu_Stop As Integer = 3
+    Public Shared ReadOnly Status_Stop As Integer = 3
 
     ' 初始化可以放置方块的定位像素集合
     Shared Function InitBlockList() As ArrayList
@@ -63,6 +63,17 @@ Public Class GameConsole
 
     ' 贪吃蛇前行
     Public Sub Move(vectorX As Integer, vectorY As Integer)
+        If IsDead(vectorX, vectorY) Then  ' 贪吃蛇头铁撞墙或咬到自己
+            Me.GameStatus = Status_Stop  ' 游戏结束
+            Me.GameForm.TI_Game.Enabled = False  ' 计时器停止计时
+            MessageBox.Show("Game Over")
+            Exit Sub
+        End If
+
+        If Eatable(vectorX, vectorY) Then  ' 贪吃蛇可以吃苹果
+            EatApple()  ' 贪吃蛇吃苹果
+            Exit Sub  ' 结束本方法
+        End If
 
         ' 擦除原来的贪吃蛇
         DoErase(Snake.Head.LocatingPoint)
@@ -88,6 +99,45 @@ Public Class GameConsole
             Snake.Body(index).CreateBody()
             Snake.Body(index).DrawSelf()
         Next
+    End Sub
+
+    ' 贪吃蛇吃苹果
+    Private Sub EatApple()
+        ' 擦除原来的贪吃蛇
+        DoErase(Snake.Head.LocatingPoint)
+        For Each block In Snake.Body
+            DoErase(block.LocatingPoint)
+        Next
+
+        ' 蛇头放到苹果的位置上
+        Snake.Head.LocatingPoint = Apple.Location
+
+        ' 记录下蛇尾的位置，之后在这里新增一个方块
+        Dim tailPoint As Point = Snake.Body(Snake.Body.Count - 1).LocatingPoint
+
+        ' 蛇身的每个方块向前一个方块移动一个方块的距离
+        For index As Integer = Snake.Body.Count - 1 To 0 Step -1
+            If index = 0 Then
+                Snake.Body(index).LocatingPoint = Snake.Head.LocatingPoint
+                Continue For
+            End If
+            ' 在蛇尾添加一个方块
+            Dim TailBlock As Block = New Block(Block.Color_SnakeBody)
+            TailBlock.LocatingPoint = tailPoint
+            Snake.Body.Add(TailBlock)
+        Next
+
+        ' 绘制新的贪吃蛇
+        Snake.Head.CreateBody()
+        Snake.Head.DrawSelf()
+        For index As Integer = 0 To Snake.Body.Count - 1
+            Snake.Body(index).CreateBody()
+            Snake.Body(index).DrawSelf()
+        Next
+
+        Score = +1  ' 得分加1
+
+        CreateApple()  ' 生成新苹果
     End Sub
 
     ' 擦除方块
@@ -219,13 +269,13 @@ Public Class GameConsole
     End Function
 
     ' 判断贪吃蛇是否要凉
-    Private Function isDead(vectorX As Integer, vectorY As Integer) As Boolean
-
+    Private Function IsDead(vectorX As Integer, vectorY As Integer) As Boolean
+        Return IsKnocking(vectorX, vectorY) OrElse IsBitingSelf(vectorX, vectorY)
     End Function
 
     ' 判断贪吃蛇是否会撞墙
     ' Return Boolean (True:头铁，False:头不铁)
-    Private Function isKnocking(vectorX As Integer, vectorY As Integer) As Boolean
+    Private Function IsKnocking(vectorX As Integer, vectorY As Integer) As Boolean
         Dim currentX As Integer = Snake.Head.LocatingPoint.X  ' 当前蛇头的X坐标
         Dim currentY As Integer = Snake.Head.LocatingPoint.Y  ' 当前蛇头的Y坐标
 
@@ -247,11 +297,11 @@ Public Class GameConsole
 
     ' 判断贪吃蛇是否会咬到自己
     ' Return Boolean (True:头铁，False:头不铁)
-    Private Function isBitingSelf(vectorX As Integer, vectorY As Integer) As Boolean
+    Private Function IsBitingSelf(vectorX As Integer, vectorY As Integer) As Boolean
         Dim nextHeadPoint = New Point(Snake.Head.LocatingPoint.X + vectorX, Snake.Head.LocatingPoint.Y + vectorY)  ' 蛇头的下一个移动位置
         Dim nextBodyPoint As Point  ' 蛇身的下一个移动位置
-        For index As Integer = 1 To Snake.Body.Count - 1  ' 蛇头不会要到紧跟在后面的蛇身的，所以循环从蛇身的第二个方块开始
-            nextBodyPoint = New Point(Snake.Body(index).LocatingPoint.X, Snake.Body(index).LocatingPoint.Y)
+        For index As Integer = 1 To Snake.Body.Count - 1  ' 蛇头不会咬到紧跟在后面的蛇身方块，所以循环从蛇身的第二个方块开始
+            nextBodyPoint = New Point(Snake.Body(index - 1).LocatingPoint.X, Snake.Body(index - 1).LocatingPoint.Y)
             If IsCoinside(nextHeadPoint, nextBodyPoint) Then
                 Return True
             End If
