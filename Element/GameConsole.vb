@@ -6,6 +6,8 @@ Public Class GameConsole
     Private _apple As Apple  ' 苹果
     Private _eraseBlock As Block = New Block()  ' 用于清除的方块
     Private _direction As Integer  ' 当前移动方向
+    Private _score As Integer  ' 当前得分
+    Private _gameStatus As Integer = Status_OK ' 游戏状态（未开始，进行中，游戏结束）
 
     ' 每次移动的偏移距离(19个像素点)
     Public Shared ReadOnly Delta As Integer = 19
@@ -27,6 +29,15 @@ Public Class GameConsole
 
     ' 随机数生成器，用于生成新的苹果对象
     Public Shared PointRandom As Random = New Random()
+
+    ' 游戏状态：未开始
+    Public Shared ReadOnly Status_OK As Integer = 1
+
+    ' 游戏状态：进行中
+    Public Shared ReadOnly Status_Running As Integer = 2
+
+    ' 游戏状态：游戏结束
+    Public Shared ReadOnly Statu_Stop As Integer = 3
 
     ' 初始化可以放置方块的定位像素集合
     Shared Function InitBlockList() As ArrayList
@@ -105,11 +116,11 @@ Public Class GameConsole
     ' 判断像素位置是否可以放置苹果
     Public Function Setable(index As Integer) As Boolean
         Dim targetPoint As Point = BlockPointList(index)
-        If IsCoiside(targetPoint, Snake.Head.LocatingPoint) Then  ' 目标像素点与蛇头重合
+        If IsCoinside(targetPoint, Snake.Head.LocatingPoint) Then  ' 目标像素点与蛇头重合
             Return False
         End If
         For Each block In Snake.Body  ' 目标像素点与蛇身的某一处重合
-            If IsCoiside(targetPoint, block.LocatingPoint) Then
+            If IsCoinside(targetPoint, block.LocatingPoint) Then
                 Return False
             End If
         Next
@@ -117,7 +128,7 @@ Public Class GameConsole
     End Function
 
     ' 判断两个像素点的位置是否重合
-    Public Function IsCoiside(pointA As Point, pointB As Point) As Boolean
+    Public Function IsCoinside(pointA As Point, pointB As Point) As Boolean
         Return pointA.X = pointB.X AndAlso pointA.Y = pointB.Y
     End Function
 
@@ -125,6 +136,7 @@ Public Class GameConsole
     Public Sub New(gameForm As GameForm)
         _gameForm = gameForm
         EraseBlock.Color = Block.Color_GamePad
+        Score = 0
     End Sub
 
     Public Property GameForm As GameForm
@@ -171,4 +183,70 @@ Public Class GameConsole
             _direction = value
         End Set
     End Property
+
+    Public Property Score As Integer
+        Get
+            Return _score
+        End Get
+        Set(value As Integer)
+            _score = value
+        End Set
+    End Property
+
+    Public Property GameStatus As Integer
+        Get
+            Return _gameStatus
+        End Get
+        Set(value As Integer)
+            _gameStatus = value
+        End Set
+    End Property
+
+    ' 判断能否吃到苹果
+    Private Function Eatable(vectorX As Integer, vectorY As Integer) As Boolean
+        Dim nextPoint = New Point(Snake.Head.LocatingPoint.X + vectorX, Snake.Head.LocatingPoint.Y + vectorY)  ' 蛇头的下一个位置
+        Return IsCoinside(nextPoint, Apple.Location)  ' 判断蛇头与苹果是否重合
+    End Function
+
+    ' 判断贪吃蛇是否要凉
+    Private Function isDead(vectorX As Integer, vectorY As Integer) As Boolean
+
+    End Function
+
+    ' 判断贪吃蛇是否会撞墙
+    ' Return Boolean (True:头铁，False:头不铁)
+    Private Function isKnocking(vectorX As Integer, vectorY As Integer) As Boolean
+        Dim currentX As Integer = Snake.Head.LocatingPoint.X  ' 当前蛇头的X坐标
+        Dim currentY As Integer = Snake.Head.LocatingPoint.Y  ' 当前蛇头的Y坐标
+
+        If currentX + vectorX < 0 Then  ' 蛇头撞西墙(左)
+            Return True
+        End If
+        If currentX + vectorX > 19 * 19 Then  ' 蛇头撞东墙(右)
+            Return True
+        End If
+        If currentY + vectorY < 0 Then  ' 蛇头撞北墙(上)
+            Return True
+        End If
+        If currentY + vectorY > 19 * 19 Then  ' 蛇头撞南墙(下)
+            Return True
+        End If
+
+        Return False  ' 蛇头不撞墙，很皮
+    End Function
+
+    ' 判断贪吃蛇是否会咬到自己
+    ' Return Boolean (True:头铁，False:头不铁)
+    Private Function isBitingSelf(vectorX As Integer, vectorY As Integer) As Boolean
+        Dim nextHeadPoint = New Point(Snake.Head.LocatingPoint.X + vectorX, Snake.Head.LocatingPoint.Y + vectorY)  ' 蛇头的下一个移动位置
+        Dim nextBodyPoint As Point  ' 蛇身的下一个移动位置
+        For index As Integer = 1 To Snake.Body.Count - 1  ' 蛇头不会要到紧跟在后面的蛇身的，所以循环从蛇身的第二个方块开始
+            nextBodyPoint = New Point(Snake.Body(index).LocatingPoint.X, Snake.Body(index).LocatingPoint.Y)
+            If IsCoinside(nextHeadPoint, nextBodyPoint) Then
+                Return True
+            End If
+        Next
+        Return False
+    End Function
+
 End Class

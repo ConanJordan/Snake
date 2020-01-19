@@ -30,6 +30,7 @@
         console.CreateSnake()
         console.CreateApple()
         console.Direction = GameConsole.Direction_Right  ' 初始方向朝右
+        console.GameStatus = GameConsole.Status_Running
         TI_Game.Enabled = True  ' 计时器开始计时
 
         PN_GamePad.Focus()
