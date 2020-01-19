@@ -1,6 +1,10 @@
 ﻿Public Class GameForm
 
-    Private console As GameConsole = New GameConsole(Me)
+    Private console As GameConsole = New GameConsole(Me)  ' 游戏主机
+
+    Private graphics As Graphics  ' 画板
+
+    Private brush As SolidBrush = New SolidBrush(Block.Color_GamePad)  ' 画刷
     Private Sub GameForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
@@ -69,25 +73,44 @@
 
     ' 结束
     Private Sub BTN_Stop_Click(sender As Object, e As EventArgs) Handles BTN_Stop.Click
-        Application.Exit()
+        TI_Game.Enabled = False
+        BTN_Pause.Text = "暂停"
+        BTN_Start.Enabled = True
+        BTN_Pause.Enabled = False
+        BTN_Stop.Enabled = False
+        LB_Score.Text = 0
+
+        ' 清空游戏主面板
+        ClearGamePad()
+    End Sub
+
+    Private Sub ClearGamePad()
+        graphics = PN_GamePad.CreateGraphics
+        Dim rec As Rectangle = New Rectangle(0, 0, 19 * 19, 19 * 19)
+        graphics.FillRectangle(brush, rec)
     End Sub
 
     ' 计时器
     Private Sub TI_Game_Tick(sender As Object, e As EventArgs) Handles TI_Game.Tick
         Select Case console.Direction  ' 判断贪吃蛇当前移动的方向
-            Case GameConsole.Direction_Up  ' Up
+            Case GameConsole.Direction_Up  ' 上
                 console.Move(0, -GameConsole.Delta)
-            Case GameConsole.Direction_Down  ' Down
+            Case GameConsole.Direction_Down  ' 下
                 console.Move(0, GameConsole.Delta)
-            Case GameConsole.Direction_Left  ' Left
+            Case GameConsole.Direction_Left  ' 左
                 console.Move(-GameConsole.Delta, 0)
-            Case GameConsole.Direction_Right  ' Right
+            Case GameConsole.Direction_Right  ' 右
                 console.Move(GameConsole.Delta, 0)
         End Select
     End Sub
 
-    ' 暂停
+    ' 暂停(继续)
     Private Sub BTN_Pause_Click(sender As Object, e As EventArgs) Handles BTN_Pause.Click
-        TI_Game.Enabled = False  ' 暂停计时器
+        TI_Game.Enabled = Not TI_Game.Enabled
+        If TI_Game.Enabled Then
+            BTN_Pause.Text = "暂停"
+        Else
+            BTN_Pause.Text = "继续"
+        End If
     End Sub
 End Class
