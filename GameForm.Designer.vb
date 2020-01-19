@@ -64,6 +64,7 @@ Partial Class GameForm
         '
         'BTN_Stop
         '
+        Me.BTN_Stop.Enabled = False
         Me.BTN_Stop.Location = New System.Drawing.Point(64, 107)
         Me.BTN_Stop.Name = "BTN_Stop"
         Me.BTN_Stop.Size = New System.Drawing.Size(75, 23)
@@ -74,6 +75,7 @@ Partial Class GameForm
         '
         'BTN_Pause
         '
+        Me.BTN_Pause.Enabled = False
         Me.BTN_Pause.Location = New System.Drawing.Point(63, 64)
         Me.BTN_Pause.Name = "BTN_Pause"
         Me.BTN_Pause.Size = New System.Drawing.Size(75, 23)
@@ -183,6 +185,7 @@ Partial Class GameForm
         Me.Controls.Add(Me.GB_Items)
         Me.Controls.Add(Me.PN_GamePad)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.KeyPreview = True
         Me.MaximizeBox = False
         Me.Name = "GameForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
