@@ -9,6 +9,7 @@ Public Class GameConsole
     Private _score As Integer  ' 当前得分
     Private _gameStatus As Integer = Status_OK ' 游戏状态（未开始，进行中，游戏结束）
     Private _directionChangable As Boolean  ' 判断是否可以变换方向。防止方向键按得过快，使蛇头直接掉头向反方向走位了。
+    Private ReadOnly InitBodyCount = 2  ' 起始的蛇身方块数
 
     ' 每次移动的偏移距离(19个像素点)
     Public Shared ReadOnly Delta As Integer = 19
@@ -53,11 +54,11 @@ Public Class GameConsole
 
     ' 生成一条贪吃蛇
     Public Sub CreateSnake()
-        Dim head As Point = New Point(10 + 19 * 2, 10)
+        Dim head As Point = New Point(10 + Delta * InitBodyCount, 10)
         Dim body As ArrayList = New ArrayList()
-        body.Add(New Point(10 + 19, 10))
-        body.Add(New Point(10, 10))
-
+        For count As Integer = 1 To InitBodyCount
+            body.Add(New Point(10 + (count - 1) * Delta, 10))
+        Next
         Snake = New Snake(head, body)
     End Sub
 
@@ -109,9 +110,6 @@ Public Class GameConsole
             DoErase(block.LocatingPoint)
         Next
 
-        ' 蛇头放到苹果的位置上
-        Snake.Head.LocatingPoint = Apple.Location
-
         ' 记录下蛇尾的位置，之后在这里新增一个方块
         Dim tailPoint As Point = Snake.Body(Snake.Body.Count - 1).LocatingPoint
 
@@ -121,11 +119,16 @@ Public Class GameConsole
                 Snake.Body(index).LocatingPoint = Snake.Head.LocatingPoint
                 Continue For
             End If
-            ' 在蛇尾添加一个方块
-            Dim TailBlock As Block = New Block(Block.Color_SnakeBody)
-            TailBlock.LocatingPoint = tailPoint
-            Snake.Body.Add(TailBlock)
+            Snake.Body(index).LocatingPoint = Snake.Body(index - 1).LocatingPoint
         Next
+
+        ' 蛇头放到苹果的位置上
+        Snake.Head.LocatingPoint = Apple.Location
+
+        ' 在蛇尾添加一个方块
+        Dim TailBlock As Block = New Block(Block.Color_SnakeBody)
+        TailBlock.LocatingPoint = tailPoint
+        Snake.Body.Add(TailBlock)
 
         ' 绘制新的贪吃蛇
         Snake.Head.CreateBody()
@@ -135,7 +138,7 @@ Public Class GameConsole
             Snake.Body(index).DrawSelf()
         Next
 
-        Score = +1  ' 得分加1
+        Score += 1  ' 得分加1
 
         CreateApple()  ' 生成新苹果
     End Sub
