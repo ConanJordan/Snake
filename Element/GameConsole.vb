@@ -5,9 +5,39 @@ Public Class GameConsole
     Private _snake As Snake  ' 贪吃蛇
     Private _apple As Apple  ' 苹果
     Private _eraseBlock As Block = New Block()  ' 用于清除的方块
+    Private _direction As Integer  ' 当前移动方向
 
     ' 每次移动的偏移距离(19个像素点)
     Public Shared ReadOnly Delta As Integer = 19
+
+    ' 方向：上
+    Public Shared ReadOnly Direction_Up = 1
+
+    ' 方向：下
+    Public Shared ReadOnly Direction_Down = 2
+
+    ' 方向：左
+    Public Shared ReadOnly Direction_Left = 3
+
+    ' 方向：右
+    Public Shared ReadOnly Direction_Right = 4
+
+    ' 可以放置方块的定位像素集合
+    Public Shared BlockPointList As ArrayList = InitBlockList()
+
+    ' 随机数生成器，用于生成新的苹果对象
+    Public Shared PointRandom As Random = New Random()
+
+    ' 初始化可以放置方块的定位像素集合
+    Shared Function InitBlockList() As ArrayList
+        Dim list As ArrayList = New ArrayList()
+        For x As Integer = 0 To 18
+            For y As Integer = 0 To 18
+                list.Add(New Point(10 + x * Delta, 10 + y * Delta))
+            Next
+        Next
+        Return list
+    End Function
 
     ' 生成一条贪吃蛇
     Public Sub CreateSnake()
@@ -65,9 +95,32 @@ Public Class GameConsole
 
     ' 生成苹果
     Public Sub CreateApple()
-        Dim location As Point = New Point(181, 181)
-        Apple = New Apple(location)
+        Dim pointIndex As Integer
+        Do
+            pointIndex = PointRandom.Next(0, 19 * 19 - 1)
+        Loop Until Setable(pointIndex)
+
+        Apple = New Apple(BlockPointList(pointIndex))
     End Sub
+
+    ' 判断像素位置是否可以放置苹果
+    Public Function Setable(index As Integer) As Boolean
+        Dim targetPoint As Point = BlockPointList(index)
+        If IsCoiside(targetPoint, Snake.Head.LocatingPoint) Then  ' 目标像素点与蛇头重合
+            Return False
+        End If
+        For Each block In Snake.Body  ' 目标像素点与蛇身的某一处重合
+            If IsCoiside(targetPoint, block.LocatingPoint) Then
+                Return False
+            End If
+        Next
+        Return True  ' 目标像素点不与贪吃蛇重合
+    End Function
+
+    ' 判断两个像素点的位置是否重合
+    Public Function IsCoiside(pointA As Point, pointB As Point) As Boolean
+        Return pointA.X = pointB.X AndAlso pointA.Y = pointB.Y
+    End Function
 
     ' 构造函数
     Public Sub New(gameForm As GameForm)
@@ -108,6 +161,15 @@ Public Class GameConsole
         End Get
         Set(value As Block)
             _eraseBlock = value
+        End Set
+    End Property
+
+    Public Property Direction As Integer
+        Get
+            Return _direction
+        End Get
+        Set(value As Integer)
+            _direction = value
         End Set
     End Property
 End Class
