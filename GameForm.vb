@@ -5,6 +5,9 @@
     Private graphics As Graphics  ' 画板
 
     Private brush As SolidBrush = New SolidBrush(Block.Color_GamePad)  ' 画刷
+
+    Shared Interval As Integer  ' 计时间隔
+
     Private Sub GameForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
@@ -28,10 +31,11 @@
     Private Sub BTN_Start_Click(sender As Object, e As EventArgs) Handles BTN_Start.Click
         Block.InitGraphics(PN_GamePad.CreateGraphics)
         console.Score = 0  ' 得分清零
-        console.CreateSnake()
-        console.CreateApple()
+        console.CreateSnake()  ' 生成贪吃蛇
+        console.CreateApple()  ' 生成苹果
         console.Direction = GameConsole.Direction_Right  ' 初始方向朝右
         console.GameStatus = GameConsole.Status_Running
+        SetInterval()  ' 设置计时器的计时间隔
         TI_Game.Enabled = True  ' 计时器开始计时
 
         PN_GamePad.Focus()
@@ -39,6 +43,27 @@
         BTN_Start.Enabled = False
         BTN_Pause.Enabled = True
         BTN_Stop.Enabled = True
+
+        MI_Game.Enabled = False
+    End Sub
+
+    ' 设置计时间隔
+    Private Sub SetInterval()
+        If MI_Diff_Rookie.Checked Then  ' 菜鸟
+            TI_Game.Interval = 500
+        End If
+        If MI_Diff_Junior.Checked Then  ' 新手
+            TI_Game.Interval = 400
+        End If
+        If MI_Diff_Normal.Checked Then  ' 一般
+            TI_Game.Interval = 300
+        End If
+        If MI_Diff_Veteran.Checked Then  ' 高手
+            TI_Game.Interval = 200
+        End If
+        If MI_Diff_Master.Checked Then  ' 大师
+            TI_Game.Interval = 100
+        End If
     End Sub
 
     ' Right
@@ -84,6 +109,7 @@
         BTN_Start.Enabled = True
         BTN_Pause.Enabled = False
         BTN_Stop.Enabled = False
+        MI_Game.Enabled = True
         LB_Score.Text = 0
 
         ' 清空游戏主面板
@@ -123,5 +149,54 @@
         Else
             BTN_Pause.Text = "继续"
         End If
+    End Sub
+
+    ' 关于贪吃蛇
+    Private Sub MI_AboutSnake_Click(sender As Object, e As EventArgs) Handles MI_AboutSnake.Click
+        MessageBox.Show("一个贪吃蛇游戏。" & vbCrLf & "@Author 李舟", "贪吃蛇")
+    End Sub
+
+    ' 菜鸟
+    Private Sub MI_Diff_Rookie_Click(sender As Object, e As EventArgs) Handles MI_Diff_Rookie.Click
+        MI_Diff_Rookie.Checked = True
+        MI_Diff_Junior.Checked = False
+        MI_Diff_Normal.Checked = False
+        MI_Diff_Veteran.Checked = False
+        MI_Diff_Master.Checked = False
+    End Sub
+
+    ' 新手
+    Private Sub MI_Diff_Junior_Click(sender As Object, e As EventArgs) Handles MI_Diff_Junior.Click
+        MI_Diff_Rookie.Checked = False
+        MI_Diff_Junior.Checked = True
+        MI_Diff_Normal.Checked = False
+        MI_Diff_Veteran.Checked = False
+        MI_Diff_Master.Checked = False
+    End Sub
+
+    ' 一般
+    Private Sub MI_Diff_Normal_Click(sender As Object, e As EventArgs) Handles MI_Diff_Normal.Click
+        MI_Diff_Rookie.Checked = False
+        MI_Diff_Junior.Checked = False
+        MI_Diff_Normal.Checked = True
+        MI_Diff_Veteran.Checked = False
+        MI_Diff_Master.Checked = False
+    End Sub
+
+    ' 高手
+    Private Sub MI_Diff_Veteran_Click(sender As Object, e As EventArgs) Handles MI_Diff_Veteran.Click
+        MI_Diff_Rookie.Checked = False
+        MI_Diff_Junior.Checked = False
+        MI_Diff_Normal.Checked = False
+        MI_Diff_Veteran.Checked = True
+        MI_Diff_Master.Checked = False
+    End Sub
+
+    Private Sub MI_Diff_Master_Click(sender As Object, e As EventArgs) Handles MI_Diff_Master.Click
+        MI_Diff_Rookie.Checked = False
+        MI_Diff_Junior.Checked = False
+        MI_Diff_Normal.Checked = False
+        MI_Diff_Veteran.Checked = False
+        MI_Diff_Master.Checked = True
     End Sub
 End Class

@@ -36,15 +36,26 @@ Partial Class GameForm
         Me.GB_Score = New System.Windows.Forms.GroupBox()
         Me.LB_Score = New System.Windows.Forms.Label()
         Me.TI_Game = New System.Windows.Forms.Timer(Me.components)
+        Me.MS_Menu = New System.Windows.Forms.MenuStrip()
+        Me.MI_Game = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MI_Difficult = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MI_Diff_Rookie = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MI_Diff_Junior = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MI_Diff_Normal = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MI_Diff_Veteran = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MI_Diff_Master = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MI_Help = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MI_AboutSnake = New System.Windows.Forms.ToolStripMenuItem()
         Me.GB_Items.SuspendLayout()
         Me.GB_Operate.SuspendLayout()
         Me.GB_Score.SuspendLayout()
+        Me.MS_Menu.SuspendLayout()
         Me.SuspendLayout()
         '
         'PN_GamePad
         '
         Me.PN_GamePad.BackColor = System.Drawing.Color.LightGray
-        Me.PN_GamePad.Location = New System.Drawing.Point(0, 0)
+        Me.PN_GamePad.Location = New System.Drawing.Point(0, 27)
         Me.PN_GamePad.Name = "PN_GamePad"
         Me.PN_GamePad.Size = New System.Drawing.Size(361, 361)
         Me.PN_GamePad.TabIndex = 0
@@ -55,7 +66,7 @@ Partial Class GameForm
         Me.GB_Items.Controls.Add(Me.BTN_Pause)
         Me.GB_Items.Controls.Add(Me.BTN_Start)
         Me.GB_Items.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.GB_Items.Location = New System.Drawing.Point(372, 71)
+        Me.GB_Items.Location = New System.Drawing.Point(372, 89)
         Me.GB_Items.Name = "GB_Items"
         Me.GB_Items.Size = New System.Drawing.Size(200, 150)
         Me.GB_Items.TabIndex = 1
@@ -101,7 +112,7 @@ Partial Class GameForm
         Me.GB_Operate.Controls.Add(Me.BTN_Down)
         Me.GB_Operate.Controls.Add(Me.BTN_Up)
         Me.GB_Operate.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.GB_Operate.Location = New System.Drawing.Point(372, 227)
+        Me.GB_Operate.Location = New System.Drawing.Point(372, 254)
         Me.GB_Operate.Name = "GB_Operate"
         Me.GB_Operate.Size = New System.Drawing.Size(200, 122)
         Me.GB_Operate.TabIndex = 2
@@ -152,7 +163,7 @@ Partial Class GameForm
         '
         Me.GB_Score.Controls.Add(Me.LB_Score)
         Me.GB_Score.Font = New System.Drawing.Font("宋体", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.GB_Score.Location = New System.Drawing.Point(372, 11)
+        Me.GB_Score.Location = New System.Drawing.Point(372, 27)
         Me.GB_Score.Name = "GB_Score"
         Me.GB_Score.Size = New System.Drawing.Size(200, 54)
         Me.GB_Score.TabIndex = 3
@@ -174,18 +185,94 @@ Partial Class GameForm
         '
         Me.TI_Game.Interval = 300
         '
+        'MS_Menu
+        '
+        Me.MS_Menu.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.MS_Menu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MI_Game, Me.MI_Help})
+        Me.MS_Menu.Location = New System.Drawing.Point(0, 0)
+        Me.MS_Menu.Name = "MS_Menu"
+        Me.MS_Menu.Size = New System.Drawing.Size(584, 27)
+        Me.MS_Menu.TabIndex = 4
+        Me.MS_Menu.Text = "MenuStrip1"
+        '
+        'MI_Game
+        '
+        Me.MI_Game.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MI_Difficult})
+        Me.MI_Game.Name = "MI_Game"
+        Me.MI_Game.Size = New System.Drawing.Size(47, 23)
+        Me.MI_Game.Text = "游戏"
+        '
+        'MI_Difficult
+        '
+        Me.MI_Difficult.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MI_Diff_Rookie, Me.MI_Diff_Junior, Me.MI_Diff_Normal, Me.MI_Diff_Veteran, Me.MI_Diff_Master})
+        Me.MI_Difficult.Name = "MI_Difficult"
+        Me.MI_Difficult.Size = New System.Drawing.Size(180, 24)
+        Me.MI_Difficult.Text = "难度"
+        '
+        'MI_Diff_Rookie
+        '
+        Me.MI_Diff_Rookie.CheckOnClick = True
+        Me.MI_Diff_Rookie.Name = "MI_Diff_Rookie"
+        Me.MI_Diff_Rookie.Size = New System.Drawing.Size(180, 24)
+        Me.MI_Diff_Rookie.Text = "菜鸟"
+        '
+        'MI_Diff_Junior
+        '
+        Me.MI_Diff_Junior.CheckOnClick = True
+        Me.MI_Diff_Junior.Name = "MI_Diff_Junior"
+        Me.MI_Diff_Junior.Size = New System.Drawing.Size(180, 24)
+        Me.MI_Diff_Junior.Text = "新手"
+        '
+        'MI_Diff_Normal
+        '
+        Me.MI_Diff_Normal.Checked = True
+        Me.MI_Diff_Normal.CheckOnClick = True
+        Me.MI_Diff_Normal.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.MI_Diff_Normal.Name = "MI_Diff_Normal"
+        Me.MI_Diff_Normal.Size = New System.Drawing.Size(180, 24)
+        Me.MI_Diff_Normal.Text = "一般"
+        '
+        'MI_Diff_Veteran
+        '
+        Me.MI_Diff_Veteran.CheckOnClick = True
+        Me.MI_Diff_Veteran.Name = "MI_Diff_Veteran"
+        Me.MI_Diff_Veteran.Size = New System.Drawing.Size(180, 24)
+        Me.MI_Diff_Veteran.Text = "高手"
+        '
+        'MI_Diff_Master
+        '
+        Me.MI_Diff_Master.CheckOnClick = True
+        Me.MI_Diff_Master.Name = "MI_Diff_Master"
+        Me.MI_Diff_Master.Size = New System.Drawing.Size(180, 24)
+        Me.MI_Diff_Master.Text = "大师"
+        '
+        'MI_Help
+        '
+        Me.MI_Help.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MI_AboutSnake})
+        Me.MI_Help.Name = "MI_Help"
+        Me.MI_Help.Size = New System.Drawing.Size(47, 23)
+        Me.MI_Help.Text = "帮助"
+        '
+        'MI_AboutSnake
+        '
+        Me.MI_AboutSnake.Name = "MI_AboutSnake"
+        Me.MI_AboutSnake.Size = New System.Drawing.Size(180, 24)
+        Me.MI_AboutSnake.Text = "关于贪吃蛇"
+        '
         'GameForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(584, 361)
+        Me.ClientSize = New System.Drawing.Size(584, 388)
         Me.Controls.Add(Me.GB_Score)
         Me.Controls.Add(Me.GB_Operate)
         Me.Controls.Add(Me.GB_Items)
         Me.Controls.Add(Me.PN_GamePad)
+        Me.Controls.Add(Me.MS_Menu)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.KeyPreview = True
+        Me.MainMenuStrip = Me.MS_Menu
         Me.MaximizeBox = False
         Me.Name = "GameForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -194,7 +281,10 @@ Partial Class GameForm
         Me.GB_Operate.ResumeLayout(False)
         Me.GB_Score.ResumeLayout(False)
         Me.GB_Score.PerformLayout()
+        Me.MS_Menu.ResumeLayout(False)
+        Me.MS_Menu.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -211,4 +301,14 @@ Partial Class GameForm
     Friend WithEvents GB_Score As GroupBox
     Friend WithEvents LB_Score As Label
     Friend WithEvents TI_Game As Timer
+    Friend WithEvents MS_Menu As MenuStrip
+    Friend WithEvents MI_Game As ToolStripMenuItem
+    Friend WithEvents MI_Difficult As ToolStripMenuItem
+    Friend WithEvents MI_Diff_Rookie As ToolStripMenuItem
+    Friend WithEvents MI_Diff_Junior As ToolStripMenuItem
+    Friend WithEvents MI_Diff_Normal As ToolStripMenuItem
+    Friend WithEvents MI_Diff_Veteran As ToolStripMenuItem
+    Friend WithEvents MI_Diff_Master As ToolStripMenuItem
+    Friend WithEvents MI_Help As ToolStripMenuItem
+    Friend WithEvents MI_AboutSnake As ToolStripMenuItem
 End Class
