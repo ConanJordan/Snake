@@ -105,7 +105,7 @@
     ' 结束
     Private Sub BTN_Stop_Click(sender As Object, e As EventArgs) Handles BTN_Stop.Click
         TI_Game.Enabled = False
-        BTN_Pause.Text = "暂停"
+        BTN_Pause.Text = "Pause"
         BTN_Start.Enabled = True
         BTN_Pause.Enabled = False
         BTN_Stop.Enabled = False
