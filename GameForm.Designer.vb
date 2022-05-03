@@ -71,7 +71,7 @@ Partial Class GameForm
         Me.GB_Items.Size = New System.Drawing.Size(200, 150)
         Me.GB_Items.TabIndex = 1
         Me.GB_Items.TabStop = False
-        Me.GB_Items.Text = "选项"
+        Me.GB_Items.Text = "Selection"
         '
         'BTN_Stop
         '
@@ -81,7 +81,7 @@ Partial Class GameForm
         Me.BTN_Stop.Size = New System.Drawing.Size(75, 23)
         Me.BTN_Stop.TabIndex = 2
         Me.BTN_Stop.TabStop = False
-        Me.BTN_Stop.Text = "结束"
+        Me.BTN_Stop.Text = "Stop"
         Me.BTN_Stop.UseVisualStyleBackColor = True
         '
         'BTN_Pause
@@ -92,7 +92,7 @@ Partial Class GameForm
         Me.BTN_Pause.Size = New System.Drawing.Size(75, 23)
         Me.BTN_Pause.TabIndex = 1
         Me.BTN_Pause.TabStop = False
-        Me.BTN_Pause.Text = "暂停"
+        Me.BTN_Pause.Text = "Pause"
         Me.BTN_Pause.UseVisualStyleBackColor = True
         '
         'BTN_Start
@@ -102,7 +102,7 @@ Partial Class GameForm
         Me.BTN_Start.Size = New System.Drawing.Size(75, 23)
         Me.BTN_Start.TabIndex = 0
         Me.BTN_Start.TabStop = False
-        Me.BTN_Start.Text = "开始"
+        Me.BTN_Start.Text = "Start"
         Me.BTN_Start.UseVisualStyleBackColor = True
         '
         'GB_Operate
@@ -117,7 +117,7 @@ Partial Class GameForm
         Me.GB_Operate.Size = New System.Drawing.Size(200, 122)
         Me.GB_Operate.TabIndex = 2
         Me.GB_Operate.TabStop = False
-        Me.GB_Operate.Text = "操作"
+        Me.GB_Operate.Text = "Operation"
         '
         'BTN_Right
         '
@@ -168,7 +168,7 @@ Partial Class GameForm
         Me.GB_Score.Size = New System.Drawing.Size(200, 54)
         Me.GB_Score.TabIndex = 3
         Me.GB_Score.TabStop = False
-        Me.GB_Score.Text = "分数"
+        Me.GB_Score.Text = "Score"
         '
         'LB_Score
         '
@@ -199,29 +199,29 @@ Partial Class GameForm
         '
         Me.MI_Game.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MI_Difficult})
         Me.MI_Game.Name = "MI_Game"
-        Me.MI_Game.Size = New System.Drawing.Size(47, 23)
-        Me.MI_Game.Text = "游戏"
+        Me.MI_Game.Size = New System.Drawing.Size(57, 23)
+        Me.MI_Game.Text = "Game"
         '
         'MI_Difficult
         '
         Me.MI_Difficult.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MI_Diff_Rookie, Me.MI_Diff_Junior, Me.MI_Diff_Normal, Me.MI_Diff_Veteran, Me.MI_Diff_Master})
         Me.MI_Difficult.Name = "MI_Difficult"
         Me.MI_Difficult.Size = New System.Drawing.Size(180, 24)
-        Me.MI_Difficult.Text = "难度"
+        Me.MI_Difficult.Text = "Level"
         '
         'MI_Diff_Rookie
         '
         Me.MI_Diff_Rookie.CheckOnClick = True
         Me.MI_Diff_Rookie.Name = "MI_Diff_Rookie"
         Me.MI_Diff_Rookie.Size = New System.Drawing.Size(180, 24)
-        Me.MI_Diff_Rookie.Text = "菜鸟"
+        Me.MI_Diff_Rookie.Text = "Rookie"
         '
         'MI_Diff_Junior
         '
         Me.MI_Diff_Junior.CheckOnClick = True
         Me.MI_Diff_Junior.Name = "MI_Diff_Junior"
         Me.MI_Diff_Junior.Size = New System.Drawing.Size(180, 24)
-        Me.MI_Diff_Junior.Text = "新手"
+        Me.MI_Diff_Junior.Text = "Junior"
         '
         'MI_Diff_Normal
         '
@@ -230,34 +230,34 @@ Partial Class GameForm
         Me.MI_Diff_Normal.CheckState = System.Windows.Forms.CheckState.Checked
         Me.MI_Diff_Normal.Name = "MI_Diff_Normal"
         Me.MI_Diff_Normal.Size = New System.Drawing.Size(180, 24)
-        Me.MI_Diff_Normal.Text = "一般"
+        Me.MI_Diff_Normal.Text = "Normal"
         '
         'MI_Diff_Veteran
         '
         Me.MI_Diff_Veteran.CheckOnClick = True
         Me.MI_Diff_Veteran.Name = "MI_Diff_Veteran"
         Me.MI_Diff_Veteran.Size = New System.Drawing.Size(180, 24)
-        Me.MI_Diff_Veteran.Text = "高手"
+        Me.MI_Diff_Veteran.Text = "Veteran"
         '
         'MI_Diff_Master
         '
         Me.MI_Diff_Master.CheckOnClick = True
         Me.MI_Diff_Master.Name = "MI_Diff_Master"
         Me.MI_Diff_Master.Size = New System.Drawing.Size(180, 24)
-        Me.MI_Diff_Master.Text = "大师"
+        Me.MI_Diff_Master.Text = "master"
         '
         'MI_Help
         '
         Me.MI_Help.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MI_AboutSnake})
         Me.MI_Help.Name = "MI_Help"
-        Me.MI_Help.Size = New System.Drawing.Size(47, 23)
-        Me.MI_Help.Text = "帮助"
+        Me.MI_Help.Size = New System.Drawing.Size(49, 23)
+        Me.MI_Help.Text = "Help"
         '
         'MI_AboutSnake
         '
         Me.MI_AboutSnake.Name = "MI_AboutSnake"
         Me.MI_AboutSnake.Size = New System.Drawing.Size(180, 24)
-        Me.MI_AboutSnake.Text = "关于贪吃蛇"
+        Me.MI_AboutSnake.Text = "About"
         '
         'GameForm
         '
@@ -276,7 +276,7 @@ Partial Class GameForm
         Me.MaximizeBox = False
         Me.Name = "GameForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "贪吃蛇"
+        Me.Text = "Snake"
         Me.GB_Items.ResumeLayout(False)
         Me.GB_Operate.ResumeLayout(False)
         Me.GB_Score.ResumeLayout(False)

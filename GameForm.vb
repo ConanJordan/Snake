@@ -145,16 +145,16 @@
     Private Sub BTN_Pause_Click(sender As Object, e As EventArgs) Handles BTN_Pause.Click
         TI_Game.Enabled = Not TI_Game.Enabled
         If TI_Game.Enabled Then
-            BTN_Pause.Text = "暂停"
+            BTN_Pause.Text = "Pause"
             PN_GamePad.Focus() '游戏面板获取焦点
         Else
-            BTN_Pause.Text = "继续"
+            BTN_Pause.Text = "Continue"
         End If
     End Sub
 
     ' 关于贪吃蛇
     Private Sub MI_AboutSnake_Click(sender As Object, e As EventArgs) Handles MI_AboutSnake.Click
-        MessageBox.Show("一个贪吃蛇游戏。" & vbCrLf & "@Author 李舟", "贪吃蛇")
+        MessageBox.Show("A classic snake game." & vbCrLf & "@Author Conan Jordan", "Snake")
     End Sub
 
     ' 菜鸟
@@ -199,5 +199,9 @@
         MI_Diff_Normal.Checked = False
         MI_Diff_Veteran.Checked = False
         MI_Diff_Master.Checked = True
+    End Sub
+
+    Private Sub GB_Items_Enter(sender As Object, e As EventArgs) Handles GB_Items.Enter
+
     End Sub
 End Class
