@@ -146,6 +146,7 @@
         TI_Game.Enabled = Not TI_Game.Enabled
         If TI_Game.Enabled Then
             BTN_Pause.Text = "暂停"
+            PN_GamePad.Focus() '游戏面板获取焦点
         Else
             BTN_Pause.Text = "继续"
         End If
